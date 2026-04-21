@@ -13,4 +13,4 @@ Chaque dossier comprend minimalement:
 4. `laboratoire_x_solution.ipynb`: Carnet interactif **avec les solutions** du laboratoire.
 
 # Contact
-Pour toute question ou commentaire: [iannick.gagnon@etsmtl.ca](mailto:iannick.gagnon@etsmtl.ca)
+Pour toute question ou commentaire: [iannick.gagnon@etsmtl.ca](mailto:iannick.gagnon@etsmtl.ca).
