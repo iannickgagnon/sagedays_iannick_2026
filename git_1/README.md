@@ -167,6 +167,9 @@ git add <fichier_ou_dossier>
 
 Le paramètre `fichier_ou_dossier` désigne l'élément dont on souhaite préparer les modifications. Il peut s'agir d'un fichier précis, d'un dossier, ou encore de `.` pour désigner le dossier courant.
 
+> [!IMPORTANT]
+> Avant d'exécuter `git add`, exécutez `git status` pour constater que le fichier modifié n'a pas encore été ajouté au `Staging Area` avec la mention `Changes not staged for commit`. Exécutez-la aussi après pour voir qu'il est ajouté avec la mention `Changes to be committed`.
+
 Par exemple, si vous avez modifié le fichier `README.md`, vous pouvez exécuter la commande suivante :
 ```markdown
 git add README.md
@@ -222,6 +225,25 @@ Après cette opération, l'état actuel est le suivant :
 
 > [!IMPORTANT]
 > Exécutez `git push -u origin main`, puis vérifiez sur GitHub que votre commit apparaît bien dans le dépôt distant.
+
+## 6 - Premier plongeon: Les branches
+
+> [!NOTE]
+> **Definition.** Une branche est un nom donné a une ligne de développement. Elle permet de faire des commits sans modifier directement une autre ligne de developpement, comme `main`.
+
+La commande `git push -u origin main` de la section précédente envoie les commits de la branche locale `main` (`Local Repository`) vers le dépôt distant nommé `origin` (c.-à-d. celui sur GitHub).
+
+Plus précisément :
+- `origin` : Désigne le dépôt distant configuré automatiquement lors du `git clone`. **Il s'agit d'un surnom choisi par Git, un peu comme le nom d'une variable, qui permet de référencer plus facilement l'adresse complète du dépôt distant.**.
+- `main` : Désigne la branche locale que l'on souhaite envoyer. Dans notre cas, il s'agit de `main`.
+- `-u` : Établit un lien de suivi entre la branche locale et la branche distante correspondante (la prochaine fois,  nous pouvons simplement faire `git push`).
+
+Toutefois, cette commande est un raccourci pour la suivante : `git push origin main:main`. La voici Dans sa forme générale : 
+```markdown
+git push origin <source_locale>:<destination_distante>
+```
+Autrement dit, nous faisons un `push` des commits de la branche locale `main` vers la branchge `main` du dépôt distant `origin`.
+
 
 ## Légende
 
