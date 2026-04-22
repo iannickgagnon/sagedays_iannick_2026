@@ -264,8 +264,38 @@ Dans cette section, nous allons:
 4. L'enregistrer dans le `Local Repository` (`git commit`)
 5. L'enregistrer dans le `Remote Repository` (`git push`)
 
+### 7.1 - Étape 1 : Créer une branche `dev` et s'y déplacer
 
+> [!NOTE]
+> **Définition.** Créer une branche consiste à ajouter un nouveau nom de branche dans le `Local Repository`, généralement à partir du commit courant. Se déplacer sur cette branche consiste ensuite à faire en sorte que le `Working Directory` reflète l'état de cette branche.
 
+La commande correspondante est la suivante (**référence :** [https://git-scm.com/docs/git-checkout](https://git-scm.com/docs/git-checkout)) :
+```markdown
+git checkout -b dev
+```
+
+Cette commande effectue deux opérations à la fois :
+1. Elle crée une nouvelle branche **locale** nommée `dev`;
+2. Elle vous déplace immédiatement sur cette branche.
+
+Vous pouvez observer le résultat comme suit:
+```bash
+> git branch
+* main # ⟵ vous êtes sur la branche 'main' 
+> git checkout -b dev
+> git branch
+* dev # ⟵ vous êtes maintenant sur la branche 'dev'
+  main
+```
+
+Autrement dit, au lieu de rester sur `main`, vous commencez maintenant à travailler sur une ligne de développement distincte nommée `dev`.
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. Le `Working Directory` contient les mêmes fichiers qu'avant, puisque la branche `dev` vient d'être créée à partir du commit courant.
+3. Le `Staging Area` est inchangé.
+4. **Le `Local Repository` contient maintenant deux branches : `main` et `dev`.**
+5. **La branche courante est maintenant `dev`.**
 
 
 
