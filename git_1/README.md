@@ -131,7 +131,8 @@ Nous allons:
 6. L'enregistrer dans le `Local Repository` (`git commit`)
 7. L'enregistrer dans le `Remote Repository` (`git push`)
 
-**Faites les étapes 1 et 2 avant de continuer.**
+> [!IMPORTANT]
+> Réalisez les étapes 1 et 2 avant de continuer.
 
 ### 5.1 Étape 3: Cloner un dépôt distant
 
@@ -151,7 +152,8 @@ Après cette opération, l'état actuel est le suivant :
 3. Le `Staging Area` est "vide" (c'est-à-dire déjà à jour avec le `Local Repository`).
 4. Les données du `Local Repository` sont stockées dans un dossier caché nommé `.git/`.
 
-**Ouvrez `README.md`, modifiez-le, puis sauvegardez. Passez ensuite à la prochaine étape.**
+> [!IMPORTANT]
+> Ouvrez `README.md`, modifiez-le, puis sauvegardez. Passez ensuite à la prochaine étape.
 
 
 
