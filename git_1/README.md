@@ -234,7 +234,7 @@ La commande `git push -u origin main` de la section précédente envoie les comm
 > **Définition.** Une branche est un nom donné a une ligne de développement. Elle permet de faire des commits sans modifier directement une autre ligne de developpement, comme `main`.
 
 <p align="center">
-  <img src="assets/images/image_1_branche_simple.drawio.svg">
+  <img src="assets/images/image_1.svg">
   <br>
 </p>
 <p align="center"><strong>Figure 1 - Schéma de branches simples</strong></p>
@@ -319,7 +319,7 @@ git push -u origin dev
 git branch -v
 ```
 
-L'option `-v` veut dire "verbeux" et affiche les commits les plus récents sur chacune des branches ainsi que leurs messages. L'option `-vv` veut dire *very verbose* ou "très verbeux" et affiche plus d'information encore.
+L'option `-v` veut dire "verbeux" et affiche les commits les plus récents sur chacune des branches ainsi que leurs messages. L'option `-vv` veut dire *very verbose* ou "très verbeux" et affiche encore plus d'information.
 
 ### 7.3 - Étape 6 : Fusionner la branche `dev` avec la branche `main`
 
@@ -340,8 +340,17 @@ git merge dev
 La première commande vous replace sur la branche `main`. La seconde demande à Git d'y intégrer les commits de la branche `dev`.
 
 Si aucun conflit n'est présent, Git effectue alors la fusion automatiquement. Deux cas sont possibles :
-- **cas 1 :** La branche `main` n'a pas changé depuis la création de `dev`; Git peut alors simplement faire avancer `main` jusqu'au dernier commit de `dev`;
-- **cas 2 :** Les branches `main` et `dev` ont toutes deux changé; Git crée alors un nouveau commit pour réunir les deux lignes de développement.
+- **Cas 2 :** Les branches `main` et `dev` ont toutes deux changé; Git crée alors un nouveau commit pour réunir les deux lignes de développement (**Figure 1**).
+- **Cas 1 :** La branche `main` n'a pas changé depuis la création de `dev`; Git peut alors simplement faire avancer `main` jusqu'au dernier commit de `dev` (**Figure 2**).
+
+<p align="center">
+  <img src="assets/images/image_2.svg">
+  <br>
+</p>
+<p align="center"><strong>Figure 2 - Déplacement de <em>main</em> vers <em>dev</em></strong></p>
+
+> [!IMPORTANT]
+> Le code de couleur utilisé dans les schémas peut donner l'impression qu'un commit "appartient" à une branche, mais ce n'est pas exact. **Une branche n'est pas un conteneur de commits**. C'est une *référence* vers un commit, habituellement le plus récent, et donc indirectement vers son historique.
 
 Vous pouvez observer le résultat comme suit :
 ```markdown
