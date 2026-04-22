@@ -77,7 +77,7 @@ Il est commun de confondre **Git** et **GitHub**, mais ce sont deux choses diff�
 **Git est un logiciel** de gestion de versions ou **version control system** (VCS) qui s'installe sur votre machine.
 C'est lui qui permet de suivre l'historique d'un projet, de creer des commits, de gerer des branches, de faire des merges, etc.
 
-**GitHub est un service d'hebergement distant muni d'une interface web**. Dans le diagramme ci-dessus, il correspond uniquement a la region `Remote Repository`. Il sert a partager et à synchroniser le projet, notamment dans le cadre d'un travail collaboratif. C'est une sorte de Google Drive / DropBox pour vos projets de programmation.
+**GitHub est un service d'hebergement distant muni d'une interface web**. Dans le diagramme ci-dessus, il correspond uniquement a la region `Remote Repository`. Il sert a partager et à synchroniser le projet, notamment dans le cadre d'un travail collaboratif.
 
 GitHub est très populaire, mais ce n'est **pas la seule option**. Il existe plusieurs alternatives, par exemple :
 - **GitLab** ([https://about.gitlab.com/](https://about.gitlab.com/))
@@ -86,7 +86,7 @@ GitHub est très populaire, mais ce n'est **pas la seule option**. Il existe plu
 
 En résumé:
 - **Git** = l'outil
-- **GitHub** = un service en ligne qui peut heberger un depot Git distant
+- **GitHub** = un service en ligne qui peut héberger un dépôt Git
 
 ---
 
