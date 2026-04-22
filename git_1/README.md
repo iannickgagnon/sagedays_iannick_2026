@@ -226,7 +226,7 @@ Après cette opération, l'état actuel est le suivant :
 > [!IMPORTANT]
 > Exécutez `git push -u origin main`, puis vérifiez sur GitHub que votre commit apparaît bien dans le dépôt distant.
 
-## 6 - Premier plongeon: Les branches
+## 6 - Introduction aux branches
 
 La commande `git push -u origin main` de la section précédente envoie les commits de la **branche** locale `main` située dans le `Local Repository`) vers le dépôt distant nommé `origin` (c.-à-d. celui sur GitHub). Nous n'avons par encore précisé ce qu'est une branche.
 
@@ -254,6 +254,26 @@ Cela dit, il est important de savoir que cette commande est un raccourci pour la
 git push origin <source_locale>:<destination_distante>
 ```
 Autrement dit, nous faisons un `push` des commits de la branche locale `main` vers la branchge `main` du dépôt distant `origin`.
+
+## 7 - Mise en oeuvre des branches
+
+Dans cette section, nous allons:
+1. Créer une branche nommée `dev` et s'y déplacer (`git checkout`).
+2. Créer un nouveau fichier qui contient du code nommé `main.py`
+3. Le déplacer dans le `Staging Area` (`git add`)
+4. L'enregistrer dans le `Local Repository` (`git commit`)
+5. L'enregistrer dans le `Remote Repository` (`git push`)
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Légende
