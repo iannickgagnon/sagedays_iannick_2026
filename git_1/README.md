@@ -178,6 +178,32 @@ Après cette opération, l'état actuel est le suivant :
 3. Le `Staging Area` contient maintenant une copie instantanée des modifications préparées pour le prochain commit.
 4. Le `Local Repository` n'a pas encore été modifié.
 
+### 5.3 - Étape 6: Enregistrer dans le `Local Repository`
+
+> [!NOTE]
+> **Définition.** Enregistrer des modifications dans le `Local Repository` consiste à créer un nouveau commit à partir du contenu actuel du `Staging Area` (`Staging Area` ⟶ `Local Repository`).
+
+La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-commit](https://git-scm.com/docs/git-commit)):
+```markdown
+git commit -m "message du commit"
+```
+
+Le paramètre `message du commit` est une courte description des changements enregistrés. Ce message doit être suffisamment clair pour permettre de comprendre rapidement la nature du commit dans l'historique du projet.
+
+Par exemple, si vous venez de préparer les modifications apportées à `README.md`, vous pouvez exécuter la commande suivante :
+```markdown
+git commit -m "Modifie README.md"
+```
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. Le `Working Directory` est à nouveau "propre" si aucun autre changement n'a été effectué depuis le `git add`.
+3. Le `Staging Area` est à jour avec le nouveau commit ou "vide".
+4. Le `Local Repository` contient maintenant un nouveau point dans l'historique.
+
+> [!IMPORTANT]
+> Exécutez `git commit -m "docs: Modifie README.md"`, puis observez le résultat avec `git log --oneline`.
+
 ## Légende
 
 - 🟣 **Violet** : préparation ou mise de côté des changements (`add`, `stash`, `unstash`)
