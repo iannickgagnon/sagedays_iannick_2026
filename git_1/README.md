@@ -74,7 +74,7 @@ Le diagramme est organisé autour de cinq régions, chacune représentant **un e
 
 Il est commun de confondre **Git** et **GitHub**, mais ce sont deux choses différentes.
 
-**Git est un logiciel** de gestion de versions ou **version control system** (VCS) qui s'installe sur votre machine.
+**Git est un logiciel** de gestion de versions ou *version control system* (VCS) qui s'installe sur votre machine.
 C'est lui qui permet de suivre l'historique d'un projet, de creer des commits, de gerer des branches, de faire des merges, etc.
 
 **GitHub est un service d'hebergement distant muni d'une interface web**. Dans le diagramme ci-dessus, il correspond uniquement a la region `Remote Repository`. Il sert a partager et à synchroniser le projet, notamment dans le cadre d'un travail collaboratif.
