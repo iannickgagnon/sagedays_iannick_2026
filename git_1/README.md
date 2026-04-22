@@ -228,7 +228,7 @@ Après cette opération, l'état actuel est le suivant :
 
 ## 6 - Premier plongeon: Les branches
 
-La commande `git push -u origin main` de la section précédente envoie les commits de la **branche** locale `main` située dans le `Local Repository`) vers le dépôt distant nommé `origin` (c.-à-d. celui sur GitHub). Nous n'avons toutefois pas précisé ce qu'est une branche.
+La commande `git push -u origin main` de la section précédente envoie les commits de la **branche** locale `main` située dans le `Local Repository`) vers le dépôt distant nommé `origin` (c.-à-d. celui sur GitHub). Nous n'avons par encore précisé ce qu'est une branche.
 
 > [!NOTE]
 > **Définition.** Une branche est un nom donné a une ligne de développement. Elle permet de faire des commits sans modifier directement une autre ligne de developpement, comme `main`.
@@ -242,11 +242,14 @@ La commande `git push -u origin main` de la section précédente envoie les comm
 Dans la **Figure 1**, il y a deux branches: `main` et `dev`. La branche `main` est généralement créée par défaut. Dans d'anciens projets, on peut toutefois rencontrer `master`. La branche `dev` est une ligne de développement appart (p. ex. vous travaillez sur un *feature*) qui  contient les noeuds `A-B`, alors que la branche `main` contient les noeuds `A-C-D`. Meme si deux commits mènent a des fichiers semblables (p. ex. `B` et `D`), ils restent differents en Git dès que leurs historiques diffèrent.
 
 Pour revenir à l'exemple de départ, nous avons :
-- `origin` : Désigne le dépôt distant configuré automatiquement lors du `git clone`. **Il s'agit d'un surnom choisi par Git, un peu comme le nom d'une variable, qui permet de référencer plus facilement l'adresse complète du dépôt distant. D'ailleurs, vous pouvez remplacer `origin` par l'adresse complète, mais c'est plutôt verbeux et vous comprendrez rapidement pourquoi un alias est utile.**.
+- `origin` : Désigne le dépôt distant configuré automatiquement lors du `git clone`.
 - `main` : Désigne la branche locale que l'on souhaite envoyer. Dans notre cas, il s'agit de `main`.
 - `-u` : Établit un lien de suivi entre la branche locale et la branche distante correspondante (la prochaine fois,  nous pouvons simplement faire `git push`).
 
-Toutefois, cette commande est un raccourci pour la suivante : `git push origin main:main`. La voici dans sa forme générale : 
+> [!NOTE]
+> Le terme `origin` est parfois agaçant au début, mais il n'est rien de plus qu'un surnom choisi par Git, un peu comme le nom d'une variable. Il permet de référencer plus facilement l'adresse complète du dépôt distant. D'ailleurs, vous pouvez remplacer `origin` par l'adresse complète, mais c'est plutôt verbeux et vous comprendrez rapidement pourquoi un alias est utile.
+
+Cela dit, il est important de savoir que cette commande est un raccourci pour la suivante : `git push origin main:main`. La voici dans sa forme générale : 
 ```markdown
 git push origin <source_locale>:<destination_distante>
 ```
