@@ -56,7 +56,7 @@ flowchart LR
 
 ---
 
-## 1. Que représentent les rectangles ?
+## 1 - Que représentent les rectangles ?
 
 Le diagramme est organisé autour de cinq régions, chacune représentant **un endroit où les changements peuvent exister à un moment donné** dans Git.
 
@@ -70,7 +70,7 @@ Le diagramme est organisé autour de cinq régions, chacune représentant **un e
 
 ---
 
-## 2. Git != GitHub
+## 2 - Git != GitHub
 
 Il est commun de confondre **Git** et **GitHub**, mais ce sont deux choses différentes.
 
@@ -90,13 +90,13 @@ En résumé:
 
 ---
 
-## 3. Installation
+## 3 - Installation
 
 Git doit être installé sur votre machine pour pouvoir être utilisé en ligne de commande. L'installation dépend du système d'exploitation. **Il est généralement préinstallé sur macOs et Linux (`git --version`)**.
 
 S'il n'est pas installé, suivez les instructions spécifiques à votre OS ici: [https://git-scm.com/install/](https://git-scm.com/install/).
 
-### 3.1 Vérification
+### 3.1 - Vérification
 
 Une fois l'installation terminée, vérifiez que Git est disponible avec la commande suivante (votre résultat pourrait être différent) :
 
@@ -105,7 +105,7 @@ Une fois l'installation terminée, vérifiez que Git est disponible avec la comm
 git version 2.46.2.windows.1
 ```
 
-### 3.2 Configuration initiale
+### 3.2 - Configuration initiale
 
 Il est fortement recommandé de configurer son nom et son adresse courriel avant de commencer à faire des commits :
 
@@ -118,7 +118,7 @@ Vous pouvez utiliser un nom (`user.name`) de votre choix, mais assurez-vous qu'i
 
 ---
 
-## 5. Premiers pas
+## 5 - Premiers pas
 
 Cette partie se concentre sur la dernière région, soit le `Remote Repository`, puisque cela nous permettra de visualiser le flux de travail Git à travers l'interface web de GitHub.
 
@@ -134,10 +134,10 @@ Nous allons:
 > [!IMPORTANT]
 > Réalisez les étapes 1 et 2 avant de continuer.
 
-### 5.1 Étape 3: Cloner un dépôt distant
+### 5.1 - Étape 3: Cloner un dépôt distant
 
 > [!NOTE]
-> **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Local Repository` ← `Remote Repository`).
+> **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Local Repository` ⟵ `Remote Repository`).
 
 La commande correspondant est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
 ```markdown
@@ -155,7 +155,28 @@ Après cette opération, l'état actuel est le suivant :
 > [!IMPORTANT]
 > Ouvrez `README.md`, modifiez-le, puis sauvegardez. Passez ensuite à la prochaine étape.
 
+### 5.2 - Étape 5: Déplacer vers le `Staging Area`
 
+> [!NOTE]
+> **Définition.** Déplacer des modifications vers le `Staging Area` consiste à indiquer à Git quels changements du `Working Directory` doivent faire partie du prochain commit (`Working Directory` ⟶ `Staging Area`).
+
+La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-add](https://git-scm.com/docs/git-add)):
+```markdown
+git add <fichier_ou_dossier>
+```
+
+Le paramètre `fichier_ou_dossier` désigne l'élément dont on souhaite préparer les modifications. Il peut s'agir d'un fichier précis, d'un dossier, ou encore de `.` pour désigner le dossier courant.
+
+Par exemple, si vous avez modifié le fichier `README.md`, vous pouvez exécuter la commande suivante :
+```markdown
+git add README.md
+```
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. Le `Working Directory` contient toujours les fichiers modifiés.
+3. Le `Staging Area` contient maintenant une copie instantanée des modifications préparées pour le prochain commit.
+4. Le `Local Repository` n'a pas encore été modifié.
 
 ## Légende
 
