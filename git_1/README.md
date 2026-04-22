@@ -263,6 +263,7 @@ Dans cette section, nous allons:
 3. Le déplacer dans le `Staging Area` (`git add`)
 4. L'enregistrer dans le `Local Repository` (`git commit`)
 5. L'enregistrer dans le `Remote Repository` (`git push`)
+6. Fusionner la branche `dev` avec la branche `main` (`git merge`).
 
 ### 7.1 - Étape 1 : Créer une branche `dev` et s'y déplacer
 
@@ -297,8 +298,28 @@ Après cette opération, l'état actuel est le suivant :
 4. **Le `Local Repository` contient maintenant deux branches : `main` et `dev`.**
 5. **La branche courante est maintenant `dev`.**
 
+> [!IMPORTANT]
+> Réalisez les étapes 2, 3 et 4 avant de continuer.
 
+### 7.2 - Étape 5 : L'enregistrer dans le `Remote Repository`
 
+La commande correspondante est la suivante (**référence :** [https://git-scm.com/docs/git-push](https://git-scm.com/docs/git-push)) :
+```markdown
+git push -u origin dev
+```
+
+Cette commande effectue ici trois opérations importantes plutôt que deux comme dans l'exemple précédent :
+1. Elle crée une nouvelle branche `dev` sur le dépôt distant si elle n'existe pas encore.
+2. Elle envoie les commits de la branche locale `dev` vers le dépôt distant `origin`.
+3. Elle établit un lien de suivi entre la branche locale `dev` et la branche distante `dev`.
+
+Vous pouvez observer le résultat comme suit :
+```markdown
+git push -u origin dev
+git branch -v
+```
+
+L'option `-v` veut dire "verbeux" et affiche les commits les plus récents sur chacune des branches ainsi que leurs messages. L'option `-vv` veut dire *very verbose* ou "très verbeux" et affiche plus d'information encore.
 
 
 
