@@ -58,7 +58,7 @@ flowchart LR
 
 ## Que représentent les rectangles ?
 
-Le diagramme est organisé autour de cinq zones, chacune représentant un endroit où les changements peuvent exister à un moment donné dans Git.
+Le diagramme est organisé autour de cinq régions, chacune représentant **un endroit où les changements peuvent exister à un moment donné** dans Git.
 
 | Rectangle | Description |
 |---|---|
@@ -67,6 +67,26 @@ Le diagramme est organisé autour de cinq zones, chacune représentant un endroi
 | `Staging Area` | Zone **intermédiaire** où l’on prépare précisément ce qui fera partie du prochain `git commit`. |
 | `Local Repository` | Contient **l’historique Git enregistré localement sur la machine**, notamment les commits et les branches locales. |
 | `Remote Repository` | Dépôt distant, par exemple sur **GitHub**, qui permet de partager et de synchroniser le projet. |
+
+---
+
+## Git != GitHub
+
+Il est commun de confondre **Git** et **GitHub**, mais ce sont deux choses différentes.
+
+**Git est un logiciel** de gestion de versions ou **version control system** (VCS) qui s'installe sur votre machine.
+C'est lui qui permet de suivre l'historique d'un projet, de creer des commits, de gerer des branches, de faire des merges, etc.
+
+**GitHub est un service d'hebergement distant muni d'une interface web**. Dans le diagramme ci-dessus, il correspond uniquement a la region `Remote Repository`. Il sert a partager et à synchroniser le projet, notamment dans le cadre d'un travail collaboratif. C'est une sorte de Google Drive / DropBox pour vos projets de programmation.
+
+GitHub est très populaire, mais ce n'est **pas la seule option**. Il existe plusieurs alternatives, par exemple :
+- **GitLab** ([https://about.gitlab.com/](https://about.gitlab.com/))
+- **Bitbucket** ([https://bitbucket.org/product/](https://bitbucket.org/product/))
+- **l'auto-hébergement** sur un serveur que l'on contrôle soi-même ([https://about.gitea.com/](https://about.gitea.com/))
+
+En résumé:
+- **Git** = l'outil
+- **GitHub** = un service en ligne qui peut heberger un depot Git distant
 
 ---
 
