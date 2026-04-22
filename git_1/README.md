@@ -1,7 +1,6 @@
 # Vue d’ensemble du flux de travail Git
 
-Ce document explique le flux de travail Git illustré dans le diagramme ci-dessous.  
-Les sections suivent le même **code couleur** que les flèches du schéma afin de faciliter la lecture.
+Cet atelier s'oriente autour du flux de travail Git illustré dans le diagramme ci-dessous.
 
 ---
 
@@ -54,6 +53,20 @@ flowchart LR
     linkStyle 10 stroke:#7e22ce,stroke-width:2px;
     linkStyle 11 stroke:#7e22ce,stroke-width:2px,stroke-dasharray: 5 5;
 ```
+
+---
+
+## Que représentent les rectangles ?
+
+Le diagramme est organisé autour de cinq zones, chacune représentant un endroit où les changements peuvent exister à un moment donné dans Git.
+
+| Rectangle | Description |
+|---|---|
+| `Stash` | Zone **temporaire** où Git peut mettre de côté des modifications non terminées pour les récupérer plus tard. |
+| `Working Directory` | Fichiers tels qu’ils existent actuellement sur le disque (**navigateur de projet de votre IDE**). |
+| `Staging Area` | Zone **intermédiaire** où l’on prépare précisément ce qui fera partie du prochain `git commit`. |
+| `Local Repository` | Contient **l’historique Git enregistré localement sur la machine**, notamment les commits et les branches locales. |
+| `Remote Repository` | Dépôt distant, par exemple sur **GitHub**, qui permet de partager et de synchroniser le projet. |
 
 ---
 
