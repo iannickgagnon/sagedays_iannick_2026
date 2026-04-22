@@ -204,6 +204,25 @@ Après cette opération, l'état actuel est le suivant :
 > [!IMPORTANT]
 > Exécutez `git commit -m "docs: Modifie README.md"`, puis observez le résultat avec `git log --oneline`.
 
+### 5.4 - Étape 7: Enregistrer dans le `Remote Repository`
+
+> [!NOTE]
+> **Définition.** Enregistrer des modifications dans le `Remote Repository` consiste à envoyer les commits du `Local Repository` vers le dépôt distant (`Local Repository` ⟶ `Remote Repository`).
+
+La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-push](https://git-scm.com/docs/git-push)):
+```markdown
+git push -u origin main
+```
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. Le `Working Directory` est propre si aucun autre changement n'a été effectué.
+3. Le `Staging Area` est à jour avec le `Local Repository`.
+4. Le `Local Repository` et le `Remote Repository` contiennent maintenant le même nouveau commit.
+
+> [!IMPORTANT]
+> Exécutez `git push -u origin main`, puis vérifiez sur GitHub que votre commit apparaît bien dans le dépôt distant.
+
 ## Légende
 
 - 🟣 **Violet** : préparation ou mise de côté des changements (`add`, `stash`, `unstash`)
