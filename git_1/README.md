@@ -56,7 +56,7 @@ flowchart LR
 
 ---
 
-## Que représentent les rectangles ?
+## 1. Que représentent les rectangles ?
 
 Le diagramme est organisé autour de cinq régions, chacune représentant **un endroit où les changements peuvent exister à un moment donné** dans Git.
 
@@ -70,7 +70,7 @@ Le diagramme est organisé autour de cinq régions, chacune représentant **un e
 
 ---
 
-## Git != GitHub
+## 2. Git != GitHub
 
 Il est commun de confondre **Git** et **GitHub**, mais ce sont deux choses différentes.
 
@@ -90,13 +90,13 @@ En résumé:
 
 ---
 
-## Installation
+## 3. Installation
 
 Git doit être installé sur votre machine pour pouvoir être utilisé en ligne de commande. L'installation dépend du système d'exploitation. **Il est généralement préinstallé sur macOs et Linux (`git --version`)**.
 
 S'il n'est pas installé, suivez les instructions spécifiques à votre OS ici: [https://git-scm.com/install/](https://git-scm.com/install/).
 
-### Vérification
+### 3.1 Vérification
 
 Une fois l'installation terminée, vérifiez que Git est disponible avec la commande suivante (votre résultat pourrait être différent) :
 
@@ -105,7 +105,7 @@ Une fois l'installation terminée, vérifiez que Git est disponible avec la comm
 git version 2.46.2.windows.1
 ```
 
-### Configuration initiale
+### 3.2 Configuration initiale
 
 Il est fortement recommandé de configurer son nom et son adresse courriel avant de commencer à faire des commits :
 
@@ -117,6 +117,43 @@ git config --global user.email "votre.email@example.com"
 Vous pouvez utiliser un nom (`user.name`) de votre choix, mais assurez-vous qu'il vous identifie clairement, car personne n'aime travailler avec `MasterHacker1337`. Sinon, il est important d'utiliser le même courriel (`user.email`) qui est associé a votre compte GitHub, afin que vos commits soient correctement reliés à votre profil ([exemple](https://github.com/iannickgagnon)).
 
 ---
+
+## 5. Premiers pas
+
+Cette partie se concentre sur la dernière région, soit le `Remote Repository`, puisque cela nous permettra de visualiser le flux de travail Git à travers l'interface web de GitHub.
+
+Nous allons:
+1. Créer un dépôt distant ([lien](https://docs.github.com/fr/enterprise-cloud@latest/repositories/creating-and-managing-repositories/quickstart-for-repositories)).
+2. Créer un fichier nommé `README.md` et y insérer du contenu à partir de l'interface web de GitHub
+3. En faire une copie locale dans `Local Repository` (`git clone`)
+4. Le modifier dans le `Working Directory`
+5. Le déplacer vers le `Staging Area` (`git add`)
+6. L'enregistrer dans le `Local Repository` (`git commit`)
+7. L'enregistrer dans le `Remote Repository` (`git push`)
+
+**Faites les étapes 1 et 2 avant de continuer.**
+
+### 5.1 Étape 3: Cloner un dépôt distant
+
+> [!NOTE]
+> **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Local Repository` ← `Remote Repository`).
+
+La commande correspondant est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
+```markdown
+git clone <url_du_depot> [nom_dossier]
+```
+
+L'`url_du_depot` est l'adresse menant à la racine de votre dépôt et ressemble généralement à `https://github.com/<votre_nom>/<nom_du_depot>` (avec ou sans `.git` à la fin). Le nom du dossier (`nom_dossier`) correspond au nom du dossier **local** qui contiendra le dépôt cloné.
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. Le `Working Directory` contient les fichiers clonés.
+3. Le `Staging Area` est "vide" (c'est-à-dire déjà à jour avec le `Local Repository`).
+4. Les données du `Local Repository` sont stockées dans un dossier caché nommé `.git/`.
+
+**Ouvrez `README.md`, modifiez-le, puis sauvegardez. Passez ensuite à la prochaine étape.**
+
+
 
 ## Légende
 
