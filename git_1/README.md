@@ -90,6 +90,34 @@ En résumé:
 
 ---
 
+## Installation
+
+Git doit être installé sur votre machine pour pouvoir être utilisé en ligne de commande. L'installation dépend du système d'exploitation. **Il est généralement préinstallé sur macOs et Linux (`git --version`)**.
+
+S'il n'est pas installé, suivez les instructions spécifiques à votre OS ici: [https://git-scm.com/install/](https://git-scm.com/install/).
+
+### Vérification
+
+Une fois l'installation terminée, vérifiez que Git est disponible avec la commande suivante (votre résultat pourrait être différent) :
+
+```
+> git --version
+git version 2.46.2.windows.1
+```
+
+### Configuration initiale
+
+Il est fortement recommandé de configurer son nom et son adresse courriel avant de commencer à faire des commits :
+
+```bash
+git config --global user.name "Votre Nom"
+git config --global user.email "votre.email@example.com"
+```
+
+Vous pouvez utiliser un nom (`user.name`) de votre choix, mais assurez-vous qu'il vous identifie clairement, car personne n'aime travailler avec `MasterHacker1337`. Sinon, il est important d'utiliser le même courriel (`user.email`) qui est associé a votre compte GitHub, afin que vos commits soient correctement reliés à votre profil ([exemple](https://github.com/iannickgagnon)).
+
+---
+
 ## Légende
 
 - 🟣 **Violet** : préparation ou mise de côté des changements (`add`, `stash`, `unstash`)
