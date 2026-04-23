@@ -650,6 +650,71 @@ Alors que dans `dev` nous avons:
 Nous somes sur la branche dev!
 ```
 
+Dans cet état, si vous tentez de changer de branche (ex: `git checkout dev`), vous verrez le message suivant, indiquant qu'il y a un conflit entre la version locale de README.md et celle de la branche `dev`:
+```markdown
+error: Your local changes to the following files would be overwritten by checkout:
+        README.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+```
+
+Si vous n'êtes pas prêt(e) à enregistrer ces changements, vous pouvez les mettre de côté temporairement dans le `Stash`, vous permettant ainsi de changer de branche. Pour ajouter le c
+```bash
+> git stash -m "Sauvegarde temporaire"
+Saved working directory and index state WIP on main: Sauvegarde temporaire
+> git stash list
+stash@{0}: On main: Sauvegarde temporaire
+```
+
+```mermaid
+flowchart LR
+
+    classDef stash fill:#f3e8ff,stroke:#7e22ce,stroke-width:2px,color:#111111;
+    classDef work fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#111111;
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+
+    ST[Stash]:::stash
+    WD[Working Directory]:::work
+    SA[Staging Area]:::faded
+    LR[Local Repository]:::faded
+    RR[Remote Repository]:::faded
+
+    WD -->|stash| ST
+    ST -->|unstash| WD
+
+    WD -->|add| SA
+    SA -->|commit| LR
+    LR -->|push| RR
+    RR -->|fetch| LR
+    RR -->|pull| WD
+    LR -->|checkout| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -.->|diff| SA
+
+    linkStyle 0 stroke:#7e22ce,stroke-width:2px;
+    linkStyle 1 stroke:#7e22ce,stroke-width:2px,stroke-dasharray: 5 5;
+
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+```
+
+Pour faire passer le contenu de la dernière entrée, celle à la position 0 (`stash@{0}`), vous pouvez faire `git stash pop` directement ou `git stash pop stash@{0}` pour être plus précis. **Cette dernière vous permet de retirer une entrée ciblée du stash quand il y en a plusieurs**.
+
+> [!NOTE]
+> Si vous avez exécuté les commandes précédentes en lien avec le `Stash`, assurez-vous qu'elle est vide pour continuer.
+
+> [!IMPORTANT]
+> Personnellement, j'utilise le stash pour des **durées *très* courtes**, car sinon cela devient une sorte de cimetière alors que j'oublie de la vider.
+
 Si vous tentez de faire `git merge` à partir de `main`, vous verrez un message semblable au suivant:
 ```markdown
 Auto-merging README.md
