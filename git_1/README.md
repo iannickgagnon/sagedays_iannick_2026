@@ -29,10 +29,7 @@ flowchart LR
 
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
-
-    WD -->|diff| SA
+    LR -->|restore| WD
 
     WD -->|stash| ST
     ST -->|unstash| WD
@@ -46,12 +43,9 @@ flowchart LR
     linkStyle 5 stroke:#2563eb,stroke-width:2px;
     linkStyle 6 stroke:#0891b2,stroke-width:2px;
     linkStyle 7 stroke:#0891b2,stroke-width:2px;
-    linkStyle 8 stroke:#0891b2,stroke-width:2px;
 
-    linkStyle 9 stroke:#6b7280,stroke-width:2px,stroke-dasharray: 5 5;
-
-    linkStyle 10 stroke:#7e22ce,stroke-width:2px;
-    linkStyle 11 stroke:#7e22ce,stroke-width:2px,stroke-dasharray: 5 5;
+    linkStyle 8 stroke:#7e22ce,stroke-width:2px;
+    linkStyle 9 stroke:#7e22ce,stroke-width:2px,stroke-dasharray: 5 5;
 ```
 
 ---
@@ -175,19 +169,17 @@ flowchart LR
     LR[Local Repository]:::activeLocal
     RR[Remote Repository]:::activeRemote
 
-    RR -->|clone| LR
-    LR -->|checkout| WD
+    RR -->|fetch /\nclone| LR
+    LR -->|checkout /\ncopie des fichiers| WD
 
     WD -->|add| SA
     SA -->|commit| LR
     LR -->|push| RR
     RR -->|pull| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
+    LR -->|restore| WD
     WD -->|stash| ST
     ST -->|unstash| WD
-    WD -.->|diff| SA
 
     linkStyle 0 stroke:#ea580c,stroke-width:2px;
     linkStyle 1 stroke:#2563eb,stroke-width:2px;
@@ -198,8 +190,6 @@ flowchart LR
     linkStyle 5 stroke:#d1d5db,stroke-width:1px;
     linkStyle 6 stroke:#d1d5db,stroke-width:1px;
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 9 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
@@ -241,11 +231,9 @@ flowchart LR
     RR -->|pull| WD
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
+    LR -->|restore| WD
     WD -->|stash| ST
     ST -->|unstash| WD
-    WD -.->|diff| SA
 
     linkStyle 0 stroke:#7c3aed,stroke-width:2px;
 
@@ -257,8 +245,6 @@ flowchart LR
     linkStyle 6 stroke:#d1d5db,stroke-width:1px;
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
     linkStyle 8 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 > [!NOTE]
@@ -308,8 +294,7 @@ flowchart LR
     RR -->|pull| WD
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
+    LR -->|restore| WD
     WD -->|diff| SA
     WD -->|stash| ST
     ST -->|unstash| WD
@@ -322,10 +307,9 @@ flowchart LR
     linkStyle 4 stroke:#d1d5db,stroke-width:1px;
     linkStyle 5 stroke:#d1d5db,stroke-width:1px;
     linkStyle 6 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 8 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
-    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 > [!NOTE]
@@ -375,11 +359,9 @@ flowchart LR
     RR -->|pull| WD
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
+    LR -->|restore| WD
     WD -->|stash| ST
     ST -->|unstash| WD
-    WD -.->|diff| SA
 
     linkStyle 0 stroke:#ea580c,stroke-width:2px;
 
@@ -392,7 +374,6 @@ flowchart LR
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
     linkStyle 8 stroke:#d1d5db,stroke-width:1px;
     linkStyle 9 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 > [!NOTE]
@@ -439,11 +420,9 @@ flowchart LR
     RR -->|fetch| LR
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
+    LR -->|restore| WD
     WD -->|stash| ST
     ST -->|unstash| WD
-    WD -.->|diff| SA
 
     linkStyle 0 stroke:#dc2626,stroke-width:2px;
 
@@ -456,7 +435,6 @@ flowchart LR
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
     linkStyle 8 stroke:#d1d5db,stroke-width:1px;
     linkStyle 9 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 > [!NOTE]
@@ -701,9 +679,7 @@ flowchart LR
     RR -->|pull| WD
     LR -->|checkout| WD
     LR -->|merge| WD
-    LR -->|rebase| WD
-    LR -->|revert| WD
-    WD -.->|diff| SA
+    LR -->|restore| WD
 
     linkStyle 0 stroke:#7e22ce,stroke-width:2px;
     linkStyle 1 stroke:#7e22ce,stroke-width:2px,stroke-dasharray: 5 5;
@@ -716,7 +692,6 @@ flowchart LR
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
     linkStyle 8 stroke:#d1d5db,stroke-width:1px;
     linkStyle 9 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 Pour faire passer le contenu de la dernière entrée, celle à la position 0 (`stash@{0}`), vous pouvez faire `git stash pop` directement ou `git stash pop stash@{0}` pour être plus précis. **Cette dernière vous permet de retirer une entrée ciblée du stash quand il y en a plusieurs**.
