@@ -757,3 +757,19 @@ git restore --staged <fichier>
 ```
 
 La commande `git restore <fichier>` annule les modifications locales présentes dans le `Working Directory` tandis que `git restore --staged <fichier>` retire un fichier du `Staging Area` sans effacer les modifications présentes dans le `Working Directory`.
+
+### 9 - Références
+
+Cette section contient quelques références utiles pour apprendre Git. Personnellement, quand j'apprends quelque chose de nouveau (ex: Terraform, Docker, regex, YAML, TOML, etc.) je commence toujours (lire: *très* souvent) par imprimer une feuille du style aide-mémoire (*cheat sheet*), je la plastifie et je l'applique plusieurs fois dans un contexte simulé pour faire un survol du sujet. C'est ce que vous trouverez à la **Référence 1** ci-dessous. Ensuite, je consulte la documentation technique des commandes de l'aide-mémoire pour comprendre plus en profondeur. C'est ce que vous trouverez à la **Référence 2**. Finalement, pour créer des automatismes, je cherche des versions gamifiées telles que présentées à la **Référence 3**. Vous seriez surpris de découvrir à quel point il existe de jeux éducatifs en informatique.
+
+1. La feuille aide-mémoire préparée par GitHub: [cliquez ici](https://github.com/iannickgagnon/sagedays_iannick_2026/blob/main/git_1/assets/git_cheat_sheet.pdf).
+2. Le livre Pro Git de Scott Chacon et Ben Straub gratuit sur le site officiel de Git : [cliquez ici](https://git-scm.com/book/fr/v2).
+3. Tutoriels gamifiés:
+    - [https://learngitbranching.js.org/?locale=fr_FR](https://learngitbranching.js.org/?locale=fr_FR)
+    - [https://ohmygit.org/](https://ohmygit.org/)
+    - [https://gitbybit.com/](https://gitbybit.com/)
+
+Bon apprentisage!
+
+---
+Iannick Gagnon
