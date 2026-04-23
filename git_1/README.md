@@ -137,9 +137,27 @@ Nous allons:
 ### 5.1 - Étape 3: Cloner un dépôt distant
 
 > [!NOTE]
-> **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Local Repository` ⟵ `Remote Repository`).
+> **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Working Directory` ⟵ `Local Repository` ⟵ `Remote Repository`). Le `Local Repository` (`.git/`) contient des objets Git en binaire représentant l'historique du projet. Git utilise ensuite ces objets pour recréer les fichiers ordinaires du `Working Directory` (ex: `main.py`).
 
-La commande correspondant est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
+```mermaid
+flowchart RL
+
+    classDef work fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#111111;
+    classDef local fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#111111;
+    classDef remote fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#111111;
+
+    WD[Working Directory]:::work
+    LR[Local Repository]:::local
+    RR[Remote Repository]:::remote
+
+    RR -->|clone| LR
+    LR -->|copie des fichiers| WD
+
+    linkStyle 0 stroke:#ea580c,stroke-width:2px;
+    linkStyle 1 stroke:#0284c7,stroke-width:2px;
+```
+
+La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
 ```markdown
 git clone <url_du_depot> [nom_dossier]
 ```
