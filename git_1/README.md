@@ -680,7 +680,7 @@ Nous sommes sur la branche main!
 
 Vous devez ensuite faire `git add`, `git commit` et `git push` pour mettre la branche `main` distante à jour. Dans la **Figure 1**, cela correspond au **commit de merge** nommé `D`. La couleur mauve indique que `D` possède une origine mixte découlant d'une résolution de conflit.
 
-Cette méthode fonctionne très bien, mais peut devenir lourde quand il y a beaucoup de conflits. Il est souvent pluis simple (et sécuritaire) d'utiliser l'interface d'un IDE comme VS Code qui contient des outils comme le suivant : 
+Cette méthode fonctionne très bien, mais peut devenir lourde quand il y a plusieurs conflits. Dans ce cas, il est plus simple (et sécuritaire) d'utiliser l'interface d'un IDE comme VS Code qui contient des outils comme le suivant : 
 
 <p align="center">
   <img src="assets/images/image_3.png" width=750>
@@ -688,4 +688,4 @@ Cette méthode fonctionne très bien, mais peut devenir lourde quand il y a beau
 </p>
 <p align="center" ><strong>Figure 3 - Éditeur de conflits VS Code</strong></p>
 
-Le lien suivant contient des explications plus spécifiques : [cliquez ici](https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts).
+Le lien suivant contient plus de détails : [cliquez ici](https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts).
