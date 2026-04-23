@@ -130,6 +130,8 @@ Nous allons:
 5. Le déplacer vers le `Staging Area` (`git add`)
 6. L'enregistrer dans le `Local Repository` (`git commit`)
 7. L'enregistrer dans le `Remote Repository` (`git push`)
+8. Modifier README.md à partir de l'interface web de GitHub
+9. Charger les mises à jour depuis le dépôt distant (`git pull`)
 
 > [!IMPORTANT]
 > Réalisez les étapes 1 et 2 avant de continuer.
@@ -410,6 +412,86 @@ Après cette opération, l'état actuel est le suivant :
 > [!IMPORTANT]
 > Exécutez `git push -u origin main`, puis vérifiez sur GitHub que votre commit apparaît bien dans le dépôt distant.
 
+### 5.5 - Étape 9: Charger les mises à jour depuis le dépôt distant (`git pull`)
+
+> [!IMPORTANT]
+> Réalisez l'étape 8 avant de continuer.
+
+```mermaid
+flowchart LR
+
+    classDef work fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#111111;
+    classDef local fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#111111;
+    classDef remote fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#111111;
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+
+    ST[Stash]:::faded
+    WD[Working Directory]:::work
+    SA[Staging Area]:::faded
+    LR[Local Repository]:::local
+    RR[Remote Repository]:::remote
+
+    RR -->|pull| WD
+
+    WD -->|add| SA
+    SA -->|commit| LR
+    LR -->|push| RR
+    RR -->|fetch| LR
+    LR -->|checkout| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -->|stash| ST
+    ST -->|unstash| WD
+    WD -.->|diff| SA
+
+    linkStyle 0 stroke:#dc2626,stroke-width:2px;
+
+    linkStyle 1 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+```
+
+> [!NOTE]
+> **Définition.** Charger les mises à jour depuis le dépôt distant consiste à récupérer les changements présents dans le `Remote Repository` et à les intégrer dans le `Working Directory`. Dans ce document, nous représentons cette opération de manière simplifiée par `Working Directory` ⟵ `Remote Repository`. **Vous pouvez considérer que `git pull` est un raccourci équivalent à `git fetch` suivi de `git merge`**.
+
+La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-pull](https://git-scm.com/docs/git-pull)) :
+```markdown
+git pull
+```
+
+Dans le cas le plus simple, cette commande récupère les changements faits à distance et met à jour vos fichiers locaux pour refléter le nouvel état du projet.
+
+> [!IMPORTANT]
+> Dans les faits, `git pull` est une commande plus riche que cette représentation simplifiée. Elle combine essentiellement une récupération des changements distants et une intégration dans votre copie locale. Pour l'instant, nous retiendrons surtout son effet visible: vos fichiers locaux sont mis à jour.
+
+Par exemple, si vous avez modifié `README.md` directement à partir de l'interface web de GitHub à l'étape 8, vous pouvez maintenant exécuter :
+```markdown
+git pull
+```
+
+Notez que cette commande est une version simplifiée de la suivants:
+```markdown
+git pull <remote> <branche>
+```
+
+Après cette opération, l'état actuel est le suivant :
+1. Le `Stash` est vide.
+2. **Le `Working Directory` contient maintenant la version mise à jour des fichiers.**
+3. Le `Staging Area` est à jour avec le `Local Repository`.
+4. **Le `Local Repository` a été mis à jour pour refléter les changements provenant du `Remote Repository`.**
+
+> [!IMPORTANT]
+> Exécutez `git pull`, puis ouvrez `README.md` pour vérifier que les modifications faites dans GitHub ont bien été récupérées localement.
+
+
 ## 6 - Introduction aux branches
 
 La commande `git push -u origin main` de la section précédente envoie les commits de la **branche** locale `main` située dans le `Local Repository`) vers le dépôt distant nommé `origin` (c.-à-d. celui sur GitHub). Nous n'avons par encore précisé ce qu'est une branche.
@@ -549,6 +631,52 @@ Après cette opération, l'état actuel est le suivant :
 4. Le `Local Repository` contient maintenant une branche `main` qui inclut aussi le travail provenant de `dev`.
 5. La branche `dev` existe encore, mais son contenu est maintenant intégré dans `main`.
 
+### 8 - Gestion de conflits
 
+Il se peut que les changements faits sur `dev` et `main` entrent en conflit. Par exemple, dans la **Figure 1** (reproduite ci-dessous), les commits `B` et `C` peuvent s'appliquer tous les deux **aux mêmes lignes** de `README.md`. 
 
+<p align="center">
+  <img src="assets/images/image_1.svg">
+  <br>
+</p>
+<p align="center"><strong>Figure 1 - Schéma de branches simples</strong></p>
+
+Le contenu dans `main` pourrait être:
+```markdown
+Nous sommes sur la branche main!
+```
+Alors que dans `dev` nous avons:
+```markdown
+Nous somes sur la branche dev!
+```
+
+Si vous tentez de faire `git merge` à partir de `main`, vous verrez un message semblable au suivant:
+```shell
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+Si vous faites `git status`, vous verrez:
+```shell
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+        both modified:   README.md
+```
+
+En ouvrant `README.md`, **n'ayez as peur**, vous verrez:
+```shell
+<<<<<<< HEAD
+Nous sommes sur la branche main!
+=======
+Nous sommes sur la branche dev!
+>>>>>>> dev
+```
+
+La ligne `<<<<<<< HEAD` correspond à la version courante (sur `main`) séparée de la version sur `dev` (`>>>>>>> dev`) par la ligne `=======`. Pour résoudre ce conflit manuellement, effacez ces lignes et conserver la version de votre choix. Par exemple:
+```shell
+Nous sommes sur la branche main!
+```
+
+Vous devez ensuite faire `git add`, `git commit` et `git push` pour mettre la branche `main` distante à jour. Dans la **Figure 1**, cela correspond au **commit de merge** nommé `D`. La couleur mauve indique que `D` possède une origine mixte découlant d'une résolution de conflit.
 
