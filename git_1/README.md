@@ -175,6 +175,48 @@ Après cette opération, l'état actuel est le suivant :
 
 ### 5.2 - Étape 5: Déplacer vers le `Staging Area`
 
+```mermaid
+flowchart LR
+
+    classDef active fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#111111;
+    classDef activeWork fill:#ffffff,stroke:#7c3aed,stroke-width:2px,color:#111111;
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+
+    ST[Stash]:::faded
+    WD[Working Directory]:::activeWork
+    SA[Staging Area]:::active
+    LR[Local Repository]:::faded
+    RR[Remote Repository]:::faded
+
+    WD -->|add| SA
+
+    WD -->|stash| ST
+    ST -->|unstash| WD
+    SA -->|commit| LR
+    LR -->|push| RR
+    RR -->|fetch| LR
+    RR -->|pull| WD
+    LR -->|checkout| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -.->|diff| SA
+
+    linkStyle 0 stroke:#7c3aed,stroke-width:2px;
+
+    linkStyle 1 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+```
+
+
 > [!NOTE]
 > **Définition.** Déplacer des modifications vers le `Staging Area` consiste à indiquer à Git quels changements du `Working Directory` doivent faire partie du prochain commit (`Working Directory` ⟶ `Staging Area`).
 
