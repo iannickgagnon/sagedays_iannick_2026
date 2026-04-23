@@ -139,6 +139,7 @@ Nous allons:
 > [!NOTE]
 > **Définition.** Cloner un dépôt consiste à créer une copie locale d'un dépôt distant (`Working Directory` ⟵ `Local Repository` ⟵ `Remote Repository`). Le `Local Repository` (`.git/`) contient des objets Git en binaire représentant l'historique du projet. Git utilise ensuite ces objets pour recréer les fichiers ordinaires du `Working Directory` (ex: `main.py`).
 
+Voici une version simplifiée de l'opération:
 ```mermaid
 flowchart RL
 
@@ -155,6 +156,48 @@ flowchart RL
 
     linkStyle 0 stroke:#ea580c,stroke-width:2px;
     linkStyle 1 stroke:#0284c7,stroke-width:2px;
+```
+
+Voici une version simplifiée du schéma d'origine:
+```mermaid
+flowchart LR
+
+    classDef work fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#111111;
+    classDef activeRemote fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#111111;
+    classDef activeLocal fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#111111;
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+
+    ST[Stash]:::faded
+    WD[Working Directory]:::work
+    SA[Staging Area]:::faded
+    LR[Local Repository]:::activeLocal
+    RR[Remote Repository]:::activeRemote
+
+    RR -->|clone| LR
+    LR -->|checkout| WD
+
+    WD -->|add| SA
+    SA -->|commit| LR
+    LR -->|push| RR
+    RR -->|pull| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -->|stash| ST
+    ST -->|unstash| WD
+    WD -.->|diff| SA
+
+    linkStyle 0 stroke:#ea580c,stroke-width:2px;
+    linkStyle 1 stroke:#2563eb,stroke-width:2px;
+
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
 
 La commande correspondante est la suivante (**référence:** [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone)):
@@ -178,20 +221,18 @@ Après cette opération, l'état actuel est le suivant :
 ```mermaid
 flowchart LR
 
-    classDef active fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#111111;
-    classDef activeWork fill:#ffffff,stroke:#7c3aed,stroke-width:2px,color:#111111;
+    classDef work fill:#f3f4f6,stroke:#6b7280,stroke-width:2px,color:#111111;
+    classDef stage fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#111111;
     classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
 
     ST[Stash]:::faded
-    WD[Working Directory]:::activeWork
-    SA[Staging Area]:::active
+    WD[Working Directory]:::work
+    SA[Staging Area]:::stage
     LR[Local Repository]:::faded
     RR[Remote Repository]:::faded
 
     WD -->|add| SA
 
-    WD -->|stash| ST
-    ST -->|unstash| WD
     SA -->|commit| LR
     LR -->|push| RR
     RR -->|fetch| LR
@@ -200,12 +241,14 @@ flowchart LR
     LR -->|merge| WD
     LR -->|rebase| WD
     LR -->|revert| WD
+    WD -->|stash| ST
+    ST -->|unstash| WD
     WD -.->|diff| SA
 
     linkStyle 0 stroke:#7c3aed,stroke-width:2px;
 
     linkStyle 1 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 2 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
     linkStyle 3 stroke:#d1d5db,stroke-width:1px;
     linkStyle 4 stroke:#d1d5db,stroke-width:1px;
     linkStyle 5 stroke:#d1d5db,stroke-width:1px;
@@ -215,7 +258,6 @@ flowchart LR
     linkStyle 9 stroke:#d1d5db,stroke-width:1px;
     linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
 ```
-
 
 > [!NOTE]
 > **Définition.** Déplacer des modifications vers le `Staging Area` consiste à indiquer à Git quels changements du `Working Directory` doivent faire partie du prochain commit (`Working Directory` ⟶ `Staging Area`).
@@ -243,6 +285,47 @@ Après cette opération, l'état actuel est le suivant :
 
 ### 5.3 - Étape 6: Enregistrer dans le `Local Repository`
 
+```mermaid
+flowchart LR
+
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+    classDef stage fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#111111;
+    classDef local fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#111111;
+
+    ST[Stash]:::faded
+    WD[Working Directory]:::faded
+    SA[Staging Area]:::stage
+    LR[Local Repository]:::local
+    RR[Remote Repository]:::faded
+
+    SA -->|commit| LR
+
+    WD -->|add| SA
+    LR -->|push| RR
+    RR -->|fetch| LR
+    RR -->|pull| WD
+    LR -->|checkout| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -->|diff| SA
+    WD -->|stash| ST
+    ST -->|unstash| WD
+
+    linkStyle 0 stroke:#0284c7,stroke-width:2px;
+
+    linkStyle 1 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+```
+
 > [!NOTE]
 > **Définition.** Enregistrer des modifications dans le `Local Repository` consiste à créer un nouveau commit à partir du contenu actuel du `Staging Area` (`Staging Area` ⟶ `Local Repository`).
 
@@ -268,6 +351,47 @@ Après cette opération, l'état actuel est le suivant :
 > Exécutez `git commit -m "docs: Modifie README.md"`, puis observez le résultat avec `git log --oneline`.
 
 ### 5.4 - Étape 7: Enregistrer dans le `Remote Repository`
+
+```mermaid
+flowchart LR
+
+    classDef local fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#111111;
+    classDef remote fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#111111;
+    classDef faded fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#9ca3af;
+
+    ST[Stash]:::faded
+    WD[Working Directory]:::faded
+    SA[Staging Area]:::faded
+    LR[Local Repository]:::local
+    RR[Remote Repository]:::remote
+
+    LR -->|push| RR
+
+    WD -->|add| SA
+    SA -->|commit| LR
+    RR -->|fetch| LR
+    RR -->|pull| WD
+    LR -->|checkout| WD
+    LR -->|merge| WD
+    LR -->|rebase| WD
+    LR -->|revert| WD
+    WD -->|stash| ST
+    ST -->|unstash| WD
+    WD -.->|diff| SA
+
+    linkStyle 0 stroke:#ea580c,stroke-width:2px;
+
+    linkStyle 1 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 2 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 3 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 5 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 6 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 7 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 8 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 9 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 10 stroke:#d1d5db,stroke-width:1px,stroke-dasharray: 5 5;
+```
 
 > [!NOTE]
 > **Définition.** Enregistrer des modifications dans le `Remote Repository` consiste à envoyer les commits du `Local Repository` vers le dépôt distant (`Local Repository` ⟶ `Remote Repository`).
