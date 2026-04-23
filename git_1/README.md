@@ -658,6 +658,18 @@ Please commit your changes or stash them before you switch branches.
 Aborting
 ```
 
+Vous pouvez visualiser le ou les conflits avec la commande `git diff <source>..<cible>` qui vous montrera les changements qui sont dans `<cible>`, mais pas dans `<source>`:
+```shell
+> git diff main..dev
+index abcdef0..1234567 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1 @@
+-Nous sommes sur la branche main!
++Nous sommes sur la branche dev!
+```
+Dans un `git diff main..dev`, la version `a/...` correspond a `main`, tandis que la version `b/...` correspond a `dev`. Plus généralement, `a` designe la version de gauche et `b` la version de droite dans la comparaison.
+
 Si vous n'êtes pas prêt(e) à enregistrer ces changements, vous pouvez les mettre de côté temporairement dans le `Stash`, vous permettant ainsi de changer de branche. Pour ajouter le c
 ```bash
 > git stash -m "Sauvegarde temporaire"
@@ -712,7 +724,7 @@ Pour faire passer le contenu de la dernière entrée, celle à la position 0 (`s
 > [!NOTE]
 > Si vous avez exécuté les commandes précédentes en lien avec le `Stash`, assurez-vous qu'elle est vide pour continuer.
 
-> [!IMPORTANT]
+> [!CAUTION]
 > Personnellement, j'utilise le stash pour des **durées *très* courtes**, car sinon cela devient une sorte de cimetière alors que j'oublie de la vider.
 
 Si vous tentez de faire `git merge` à partir de `main`, vous verrez un message semblable au suivant:
