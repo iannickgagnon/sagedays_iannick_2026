@@ -412,24 +412,24 @@ flowchart LR
     LR[Local Repository]:::local
     RR[Remote Repository]:::remote
 
-    RR -->|pull| WD
+    
 
     WD -->|add| SA
     SA -->|commit| LR
     LR -->|push| RR
     RR -->|fetch| LR
+    RR -->|pull| WD
     LR -->|checkout| WD
     LR -->|merge| WD
     LR -->|restore| WD
     WD -->|stash| ST
     ST -->|unstash| WD
 
-    linkStyle 0 stroke:#dc2626,stroke-width:2px;
-
+    linkStyle 0 stroke:#d1d5db,stroke-width:1px;
     linkStyle 1 stroke:#d1d5db,stroke-width:1px;
     linkStyle 2 stroke:#d1d5db,stroke-width:1px;
     linkStyle 3 stroke:#d1d5db,stroke-width:1px;
-    linkStyle 4 stroke:#d1d5db,stroke-width:1px;
+    linkStyle 4 stroke:#dc2626,stroke-width:2px;
     linkStyle 5 stroke:#d1d5db,stroke-width:1px;
     linkStyle 6 stroke:#d1d5db,stroke-width:1px;
     linkStyle 7 stroke:#d1d5db,stroke-width:1px;
