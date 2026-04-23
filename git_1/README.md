@@ -741,3 +741,19 @@ Cette méthode fonctionne très bien, mais peut devenir lourde quand il y a plus
 <p align="center" ><strong>Figure 3 - Éditeur de conflits VS Code</strong></p>
 
 Le lien suivant contient plus de détails : [cliquez ici](https://code.visualstudio.com/docs/sourcecontrol/merge-conflicts).
+
+### 8 - Au secours!
+
+Les choses étant ce qu'elles sont, vous arriverez certainement dans une situation dans laquelle vous voudrez revenir en arrière. Il existe plusieurs commandes pour réécrire l'historique telles que `git reset`, `git rebase`, mais nous aborderons la plus utile dans le cadre de notre première aventure: `git restore`.
+
+> [!NOTE]
+> **Définition.** La commande `git restore` permet de remettre un fichier dans un état antérieur connu de Git. Selon les options utilisées, elle peut agir sur le `Working Directory` ou sur le `Staging Area`.
+
+Les deux formes présentées sont (**référence:** [https://git-scm.com/docs/git-pull](https://git-scm.com/docs/git-restore)) :
+
+```markdown
+git restore <fichier>
+git restore --staged <fichier>
+```
+
+La commande `git restore <fichier>` annule les modifications locales présentes dans le `Working Directory` tandis que `git restore --staged <fichier>` retire un fichier du `Staging Area` sans effacer les modifications présentes dans le `Working Directory`.
