@@ -651,21 +651,21 @@ Nous somes sur la branche dev!
 ```
 
 Si vous tentez de faire `git merge` à partir de `main`, vous verrez un message semblable au suivant:
-```shell
+```markdown
 Auto-merging README.md
 CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
 Si vous faites `git status`, vous verrez:
-```shell
+```markdown
 Unmerged paths:
   (use "git add <file>..." to mark resolution)
         both modified:   README.md
 ```
 
 En ouvrant `README.md`, **n'ayez as peur**, vous verrez:
-```shell
+```markdown
 <<<<<<< HEAD
 Nous sommes sur la branche main!
 =======
@@ -674,7 +674,7 @@ Nous sommes sur la branche dev!
 ```
 
 La ligne `<<<<<<< HEAD` correspond à la version courante (sur `main`) séparée de la version sur `dev` (`>>>>>>> dev`) par la ligne `=======`. Pour résoudre ce conflit manuellement, effacez ces lignes et conserver la version de votre choix. Par exemple:
-```shell
+```markdown
 Nous sommes sur la branche main!
 ```
 
