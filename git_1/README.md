@@ -1,3 +1,7 @@
+# Introduction
+
+Le document qui suit est une version écrite de l'atelier d'introduction que j'ai ([Iannick Gagnon](https://www.linkedin.com/in/iannick-gagnon-3304311a6/)) animé lors de l'événement SageDays 2026 tenu à l'ÉTS les 27-28-29 du mois d'avril 2026.
+
 # Vue d’ensemble du flux de travail Git
 
 Cet atelier s'oriente autour du flux de travail Git illustré dans le diagramme ci-dessous.
