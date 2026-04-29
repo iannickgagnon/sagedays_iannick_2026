@@ -774,6 +774,7 @@ Cette section contient quelques références utiles pour apprendre Git. Personne
     - [https://learngitbranching.js.org/?locale=fr_FR](https://learngitbranching.js.org/?locale=fr_FR)
     - [https://ohmygit.org/](https://ohmygit.org/)
     - [https://gitbybit.com/](https://gitbybit.com/)
+ 4. Guide d'hygiène pour les commits: [https://www.conventionalcommits.org/en/v1.0.0/](https://www.conventionalcommits.org/en/v1.0.0/)
 
 Bon apprentisage!
 
